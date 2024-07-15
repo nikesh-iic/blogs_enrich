@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="mb-4">Blog Posts</h1>
+{% for post in posts %}
+<div class="card mb-4">
+  <div class="card-body">
+    <h2 class="card-title">
+      <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+    </h2>
+    <p class="card-text">{{ post.content|truncatechars:200 }}</p>
+    <p class="card-text">
+      Author: {{ post.author.username }} | {{ post.created_at }}
+    </p>
+  </div>
+</div>
+{% endfor %} {% endblock %}
